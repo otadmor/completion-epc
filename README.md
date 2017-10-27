@@ -39,7 +39,7 @@ frida-python/src/frida/repl.py
 
 # Installation:
 Just put in init.el:
-```
+```elisp
 (require 'completion-epc)
 ```
 

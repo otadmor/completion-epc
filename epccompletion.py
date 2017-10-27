@@ -4,9 +4,6 @@ import threading
 from epc.server import EPCServer
 from collections import namedtuple
 
-if os.environ.get("TERM", '') != "dumb":
-    print "WARNING : terminal is not dumb (not running on emacs)."
-    
 class EPCCompletionServer(EPCServer):
     def __init__(self, address='localhost', port=0, *args, **kargs):
         EPCServer.__init__(self, (address, port), *args, **kargs)
@@ -22,6 +19,9 @@ class EPCCompletionServer(EPCServer):
         EPCServer.print_port(self, stream)
             
 if __name__ == "__main__":
+    if os.environ.get("TERM", '') != "dumb":
+        print "WARNING : terminal is not dumb (not running on emacs)."
+    
     class MyCompletionServer(EPCCompletionServer):
         def complete(self, *to_complete):
             to_complete = ''.join(to_complete)
